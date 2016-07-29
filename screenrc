@@ -1,0 +1,23 @@
+multiuser on
+aclumask ?+r
+
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "[ %H ][%= %?%-Lw%?(%n*%f %t%?(%u)%?)%?%+Lw%?%?%= ][ %m/%d %c ]"
+
+# make pageup/down work right
+termcapinfo xterm ti@:te@
+
+defmonitor on
+shelltitle w #Set interactively with ctrl-a A
+
+startup_message off
+
+deflogin on
+autodetach on
+
+vbell off
+
+# enable colors
+term xterm-256color
+
