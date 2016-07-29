@@ -26,7 +26,7 @@
     ~/.bashrc:
       path: bash/bashrc
     ~/.bash_profile:
-      path: bash/bashrc_profile
+      path: bash/bash_profile
     ~/.bash_logout:
       path: bash/bash_logout
 
