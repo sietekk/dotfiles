@@ -21,6 +21,7 @@ set number
 set mouse=a
 syntax enable
 colorscheme molokai
+set t_Co=256
 let g:molokai_original = 1
 let g:rehash256 = 1
 set backupdir=~/.vim/backup_files//
@@ -31,6 +32,7 @@ autocmd FileType python setlocal colorcolumn=80
 autocmd FileType python setlocal tabstop=4
 autocmd FileType python setlocal softtabstop=4
 autocmd FileType python setlocal shiftwidth=4
+highlight ColorColumn ctermbg=7
 set backupcopy=yes
 
 "Don't unselect block after indent/outdent
