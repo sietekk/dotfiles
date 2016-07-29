@@ -1,3 +1,5 @@
+"Pathogen
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 syntax on
 set nocompatible
@@ -24,10 +26,30 @@ let g:rehash256 = 1
 set backupdir=~/.vim/backup_files//
 set directory=~/.vim/swap_files//
 set undodir=~/.vim/undo_files//
-let g:nerdtree_tabs_open_on_console_startup=1
 let NERDTreeShowHidden=1
 autocmd FileType python setlocal colorcolumn=80
 autocmd FileType python setlocal tabstop=4
 autocmd FileType python setlocal softtabstop=4
 autocmd FileType python setlocal shiftwidth=4
 set backupcopy=yes
+
+"Don't unselect block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+"Splitting options
+set splitbelow
+set splitright
+
+"Command aliases
+command WQ wq
+command Wq wq
+command W w
+command Q q
+
+"Set window title to filename
+set title
+
+"Status bar options
+set showcmd
+set laststatus=2

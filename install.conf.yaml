@@ -1,45 +1,37 @@
-- clean:
-    - '~'
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
 
 - link:
     ~/.dotfiles:
-        relink: true
-        path: ''
+      path: ''
     ~/.gitconfig:
-        relink: true
-        path: gitconfig
+      path: gitconfig
     ~/.gitignore_global:
-        relink: true
-        path: gitignore_global
+      path: gitignore_global
     ~/.hgrc:
-        relink: true
-        path: hgrc
+      path: hgrc
     ~/.hgignore_global:
-        relink: true
-        path: hgignore_global
+      path: hgignore_global
     ~/.screenrc:
-        relink: true
-        path: screenrc
+      path: screenrc
     ~/.vim:
-        relink: true
-        path: vim/
+      path: vim/
     ~/.vimrc:
-        relink: true
-        path: vim/vimrc
+      path: vim/vimrc
     ~/.bashrc:
-        relink: true
-        path: bash/bashrc
+      path: bash/bashrc
     ~/.bash_profile:
-        relink: true
-        path: bash/bashrc_profile
+      path: bash/bashrc_profile
     ~/.bash_logout:
-        relink: true
-        path: bash/bash_logout
+      path: bash/bash_logout
 
 - shell:
-    - mkdir -p ~/tmp/.vim
-    - mkdir -p ~/bin
-    - mkdir -p ~/dev
-    - touch ~/.screenrc_local
-    - git submodule update --init --recursive
+  - mkdir -p ~/.vim/backup_files/
+  - mkdir -p ~/.vim/swap_files/
+  - mkdir -p ~/.vim/undo_files/
+  - mkdir -p ~/dev
+  - [git submodule update --init --recursive, Installing submodules]
 
