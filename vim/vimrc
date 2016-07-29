@@ -1,6 +1,6 @@
 "Pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+call pathogen#infect()
 syntax on
 set nocompatible
 set undolevels=1000
