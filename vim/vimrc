@@ -1,6 +1,6 @@
 "Pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+execute pathogen#infect()
 syntax on
 set nocompatible
 set undolevels=1000
@@ -26,7 +26,7 @@ let g:rehash256 = 1
 set backupdir=~/.vim/backup_files//
 set directory=~/.vim/swap_files//
 set undodir=~/.vim/undo_files//
-let NERDTreeShowHidden=1
+autocmd vimenter * NERDTree
 autocmd FileType python setlocal colorcolumn=80
 autocmd FileType python setlocal tabstop=4
 autocmd FileType python setlocal softtabstop=4
