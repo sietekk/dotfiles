@@ -12,3 +12,6 @@
 
 [include]
     path = ~/.gitconfig_local
+[user]
+	name = Michael Conroy
+	email = sietekk@gmail.com
