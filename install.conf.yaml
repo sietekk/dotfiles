@@ -23,6 +23,8 @@
       path: vim/
     ~/.vimrc:
       path: vim/vimrc
+    ~/.profile:
+      path: bash/profile
     ~/.bashrc:
       path: bash/bashrc
     ~/.bash_profile:
