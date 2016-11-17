@@ -76,3 +76,6 @@ let g:syntastic_check_on_wq = 0
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi']
 
+"editorconfig settings
+let g:EditorConfig_core_mode = 'external_command'
+let g:EditorConfig_verbose=1
