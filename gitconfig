@@ -1,6 +1,9 @@
 [core]
     excludesfile = ~/.gitignore_global
-    editor = vi
+    editor = vim
+
+[diff]
+    tool = vimdiff
 
 [color]
     diff = auto
@@ -12,6 +15,7 @@
 
 [include]
     path = ~/.gitconfig_local
+
 [user]
 	name = Michael Conroy
 	email = sietekk@gmail.com

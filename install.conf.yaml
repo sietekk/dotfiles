@@ -33,6 +33,15 @@
       path: bash/bash_logout
 
 - shell:
+  - description: Build vimproc
+    command: |
+      if [ ! -d ~/.vim/bundle/vimproc.vim ]; then
+        exit 0
+      fi
+      cd ~/.vim/bundle/vimproc.vim
+      eval "make"
+
+- shell:
   - description: Build YouCompleteMe
     command: |
       if [ ! -d ~/.vim/bundle/YouCompleteMe ] || \
