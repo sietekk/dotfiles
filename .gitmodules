@@ -41,3 +41,15 @@
 [submodule "vim/bundle/auto-pairs"]
 	path = vim/bundle/auto-pairs
 	url = git://github.com/jiangmiao/auto-pairs.git
+[submodule "vim/bundle/vim-bracketed-paste"]
+	path = vim/bundle/vim-bracketed-paste
+	url = https://github.com/ConradIrwin/vim-bracketed-paste
+[submodule "vim/bundle/vim-jsdoc"]
+	path = vim/bundle/vim-jsdoc
+	url = git@github.com:heavenshell/vim-jsdoc.git
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/bundle/indentLine"]
+	path = vim/bundle/indentLine
+	url = git@github.com:Yggdroot/indentLine.git

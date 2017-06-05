@@ -1,7 +1,7 @@
 "Pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
-syntax on
+syntax enable
 filetype plugin indent on
 set nocompatible
 set undolevels=1000
@@ -9,7 +9,7 @@ set history=50
 set ruler
 set backspace=indent,eol,start
 set showmatch
-set ignorecase
+"Set to ignore case in searches set ignorecase
 set hlsearch
 set incsearch
 set vb t_vb=
@@ -19,23 +19,34 @@ set shiftwidth=2
 set expandtab
 set smarttab
 set number
+
+" Mouse Settings
 set mouse=a
-syntax enable
-colorscheme molokai
+set ttymouse=xterm2
+
+" Set Clipboard
+set clipboard=unnamed
+
+"Color scheme
+set background=dark
+"colorscheme molokai
+colorscheme solarized
 set t_Co=256
+
+"vim-airline settings
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace = 1
 let g:airline_theme='molokai'
-"let g:molokai_original = 1
-"let g:rehash256 = 1
-let NERDTreeShowHidden=1
 set backupdir=~/.vim/backup_files//
 set directory=~/.vim/swap_files//
 set undodir=~/.vim/undo_files//
-autocmd vimenter * NERDTree
 autocmd FileType python setlocal colorcolumn=80
 autocmd FileType python setlocal tabstop=4
 autocmd FileType python setlocal softtabstop=4
 autocmd FileType python setlocal shiftwidth=4
 highlight ColorColumn ctermbg=7
+
+" Why did I need to set this?
 set backupcopy=yes
 
 "Don't unselect block after indent/outdent
@@ -59,6 +70,16 @@ set title
 set showcmd
 set laststatus=2
 
+"NERDTree
+nnoremap <F1> :NERDTreeToggle<CR>
+autocmd vimenter * NERDTree
+let NERDTreeShowHidden=1
+"let NERDTreeQuitOnOpen=1
+"Refocus on opened file (go to previous (last accessed) window)
+autocmd VimEnter * wincmd p
+"Close vim if NERDTree is last window left open
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 "Typescript setup
 let g:typescript_compiler_binary = 'tsc'
 let g:typescript_compiler_options = ''
@@ -73,12 +94,14 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:tsuquyomi_disable_quickfix = 0
 let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_auto_loc_list = 1
 
 "editorconfig settings
-let g:EditorConfig_core_mode = 'external_command'
+"let g:EditorConfig_core_mode = 'external_command'
 "let g:EditorConfig_verbose=1
 
 "Airline setup
@@ -115,3 +138,28 @@ let g:airline_symbols.linenr = ''
 "set runtimepathr^+=lib/
 let g:tsuquyomi_auto_open=1
 let g:tsuquyomi_definition_split=2
+
+" vim-json config
+let g:vim_json_syntax_conceal = 0
+
+" vim-jsdoc config
+nmap <silent> <C-l> <Plug>(jsdoc)
+let g:jsdoc_enable_es6 = 1
+
+" needed so that vim still understands escape sequences
+nnoremap <esc>^[ <esc>^[
+
+" cursorline and cursorcolumn
+set cursorline
+"hi CursorLine ctermbg=237
+set cursorcolumn
+"hi CursorColumn ctermbg=237
+
+"Set Line Number Colors
+hi LineNr ctermbg=234
+
+"SGR mouse protocol
+set ttymouse=sgr
+
+" indentLine Settings
+let g:indentLine_char = "|"
