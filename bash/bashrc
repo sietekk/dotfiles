@@ -55,6 +55,12 @@ alias ll='ls -Flash'
 #alias la='ls -A'
 #alias l='ls -CF'
 
+# git aliases
+alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+
+# alias for terminal MavVim
+alias mvim='mvim -v'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
