@@ -34,7 +34,7 @@ color solarized
 set t_Co=256
 
 "vim-airline settings
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#whitespace = 1
 let g:airline_theme='molokai'
 set backupdir=~/.vim/backup_files//
@@ -164,3 +164,6 @@ set ttymouse=sgr
 " indentLine Settings
 let g:indentLine_char = "¦"
 let g:indentLine_color_term = 8
+
+" remove scrollbars on macvim
+set guioptions=

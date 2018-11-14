@@ -20,3 +20,5 @@
 [user]
 	name = Michael Conroy
 	email = sietekk@gmail.com
+[credential]
+	helper = osxkeychain
