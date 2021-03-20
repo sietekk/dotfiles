@@ -1,11 +1,12 @@
-# Add HADOOP_OPTS to path for Hadoop
-export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
-# Set aliases to start/stop Hadoop
-alias hstart="/usr/local/Cellar/hadoop/3.1.1/sbin/start-all.sh"
-alias hstop="/usr/local/Cellar/hadoop/3.1.1/sbin/stop-all.sh"
 
-# Set alias and path to connect to VPN
+# Set user bash scripts path
 export PATH=/Users/michael/bin/:$PATH
+
+# Handle Java Installations
+export JAVA_HOME_8=$(/usr/libexec/java_home -v1.8)
+export JAVA_HOME_11=$(/usr/libexec/java_home -v12)
+
+export JAVA_HOME=$JAVA_HOME_8
 
 # Add MySQL to path
 export PATH=/usr/local/mysql/bin/:$PATH
@@ -31,7 +32,7 @@ HISTSIZE=100000
 shopt -s checkwinsize
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+PS1='\[\e[35m\]\t\[\e[m\] \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -83,44 +84,59 @@ fi
 # ENABLE ALL THE COLORS!
 export TERM='xterm-color'
 
-export NVM_DIR="/Users/michael/.nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_DIR="/Users/michael/.nvm"
+# [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export PATH="$HOME/.yarn/bin:$PATH"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Pyenv is removing the default ability to append pyenv environment
-# to the prompt. This export removes the deprecation warning.
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-# But since adding pyenv to the prompt is useful anyway, this function
-# re-adds it.
-__pyenv_version_ps1 ()
-{
-    local ret=$?;
-    if [ -n "${PYENV_VERSION}" ]; then
-        echo -n "(${PYENV_VERSION}) "
-    fi
-    return $?
-}
-
-PS1="\$(__pyenv_version_ps1)${PS1}"
-
-# Init pyenv
-export PATH="/Users/michael/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# export PATH="$HOME/.yarn/bin:$PATH"
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Homebrew bash completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
+# if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#   . $(brew --prefix)/etc/bash_completion
+# fi
 
-# Default duration for MFA
-export MFA_STS_DURATION=3600
+# Nexus Configuration
+set -o allexport
+source ~/.nexus
+set +o allexport
+NEXUS_INDEX_URL="https://$NEXUS_PULL_USER:$NEXUS_PULL_PASS@artifacts.dox.support/repository/python/simple"
+PIP_INDEX_URL="https://$NEXUS_PULL_USER:$NEXUS_PULL_PASS@artifacts.dox.support/repository/python/simple"
 
-# Export AWS Profile (needed for CoreVPC)
-export AWS_PROFILE=aws-hhs-cms-ccsq-qpp-navadevops
+# Snowflake COnfiguration
+set -o allexport
+source ~/.snowflake
+set +o allexport
+
+# Open file in Sublime Text
+alias sub="open -t"
+alias sublime="open -t"
+
+# virtualenvwrapper Configuration
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/dev
+export VIRTUALENVWRAPPER_PYTHON=/Users/michael/.pyenv/shims/python
+source /Users/michael/.pyenv/versions/3.7.9/bin/virtualenvwrapper.sh
+
+# OpenSSL Compiler Flags and Path
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+
+# For enhanced Mortar functionality, including creating new clusters
+export MORTAR_SUDO=TRUE
+
+# For ScaleFT/ASA
+export SCALEFT_ENABLED=true
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+
+# Init pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+export MORTAR_AWS_VAULT_PROFILE='dox-data-dev'
+
+
 

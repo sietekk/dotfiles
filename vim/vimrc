@@ -24,22 +24,17 @@ set number
 set mouse=a
 set ttymouse=xterm2
 
-" Set Clipboard
-set clipboard=unnamed
-
 "Color scheme
 set background=dark
-colorscheme solarized
-color solarized
 set t_Co=256
 
 "vim-airline settings
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#whitespace = 1
-let g:airline_theme='molokai'
-set backupdir=~/.vim/backup_files//
-set directory=~/.vim/swap_files//
-set undodir=~/.vim/undo_files//
+"let g:airline#extensions#tabline#enabled = 0
+"let g:airline#extensions#whitespace = 1
+"let g:airline_theme='molokai'
+"set backupdir=~/.vim/backup_files//
+"set directory=~/.vim/swap_files//
+"set undodir=~/.vim/undo_files//
 autocmd FileType python setlocal colorcolumn=80
 autocmd FileType python setlocal tabstop=4
 autocmd FileType python setlocal softtabstop=4
@@ -81,35 +76,35 @@ autocmd VimEnter * wincmd p
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "Typescript setup
-let g:typescript_compiler_binary = 'tsc'
-let g:typescript_compiler_options = ''
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
+"let g:typescript_compiler_binary = 'tsc'
+"let g:typescript_compiler_options = ''
+"autocmd QuickFixCmdPost [^l]* nested cwindow
+"autocmd QuickFixCmdPost    l* nested lwindow
 
-autocmd FileType typescript JsPreTmpl html
-autocmd FileType typescript syn clear foldBraces
+"autocmd FileType typescript JsPreTmpl html
+"autocmd FileType typescript syn clear foldBraces
 
 "Syntastic Configuration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:tsuquyomi_disable_quickfix = 0
-let g:syntastic_typescript_checkers = ['tsuquyomi']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_auto_loc_list = 1
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 1
+"let g:tsuquyomi_disable_quickfix = 0
+"let g:syntastic_typescript_checkers = ['tsuquyomi']
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_auto_loc_list = 1
 
 "editorconfig settings
 "let g:EditorConfig_core_mode = 'external_command'
 "let g:EditorConfig_verbose=1
 
 "Airline setup
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
+"if !exists('g:airline_symbols')
+"    let g:airline_symbols = {}
+"endif
 
 " unicode symbols
 "let g:airline_left_sep = '»'
@@ -136,8 +131,8 @@ endif
 
 "Add vimproc.vim lib/ dir to runtimepath
 "set runtimepathr^+=lib/
-let g:tsuquyomi_auto_open=1
-let g:tsuquyomi_definition_split=2
+"let g:tsuquyomi_auto_open=1
+"let g:tsuquyomi_definition_split=2
 
 " vim-json config
 let g:vim_json_syntax_conceal = 0

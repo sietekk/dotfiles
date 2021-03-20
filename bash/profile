@@ -1,1 +1,6 @@
 [[ -e ~/.bashrc  ]] && source ~/.bashrc     # load aliases etc.
+
+# added by Snowflake SnowSQL installer v1.0
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+
+export PATH="$HOME/.poetry/bin:$PATH"
