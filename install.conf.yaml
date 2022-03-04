@@ -9,20 +9,6 @@
 - link:
     ~/.dotfiles:
       path: ''
-    ~/.gitconfig:
-      path: gitconfig
-    ~/.gitignore_global:
-      path: gitignore_global
-    ~/.hgrc:
-      path: hgrc
-    ~/.hgignore_global:
-      path: hgignore_global
-    ~/.screenrc:
-      path: screenrc
-    ~/.vim:
-      path: vim/
-    ~/.vimrc:
-      path: vim/vimrc
     ~/.profile:
       path: bash/profile
     ~/.bashrc:
@@ -31,72 +17,3 @@
       path: bash/bash_profile
     ~/.bash_logout:
       path: bash/bash_logout
-
-- shell:
-  - description: Installing submodules
-    command: git submodule update --init --recursive
-
-- shell:
-  - description: Build vimproc
-    command: |
-      if [ -d ~/.vim/bundle/vimproc.vim ]; then
-          cd ~/.vim/bundle/vimproc.vim
-          eval "make"
-      else
-          echo "VIMPROC INSTALLATION FAILED"
-      fi
-
-- shell:
-  - description: Build YouCompleteMe
-    command: |
-      cmakeinstalled=$(type cmake 2>&1 | grep "cmake is" | wc -l)
-      if [ $cmakeinstalled = 0 ]; then
-          if [[ "$OSTYPE" == "darwin"* ]]; then
-              echo "Installing cmake with brew..." > /dev/tty
-              brew install cmake > /dev/tty 2>&1 || true
-              cd ~/.vim/bundle/YouCompleteMe
-              eval "./install.py --clang-completer > /dev/tty 2>&1"
-          elif [[ "$OSTYPE" == "linux"* ]]; then
-              echo "Installing required packages: build-essential cmake python-dev..." > /dev/tty
-                  sudo apt-get install build-essential cmake python-dev < /dev/tty > /dev/tty 2>&1
-                  cd ~/.vim/bundle/YouCompleteMe
-                  eval "./install.py --clang-completer > /dev/tty 2>&1"
-          else
-              echo "UNKNOWN OS FOR CMAKE"
-          fi
-      fi
-      if [ $? -ne 0  ]; then
-          echo "CMAKE INSTALLATION ERROR"
-      fi
-
-- shell:
-  - description: Create VIM backup, swap, and undo directories
-    command: |
-      mkdir -p ~/.vim/backup_files/
-      mkdir -p ~/.vim/swap_files/
-      mkdir -p ~/.vim/undo_files/
-
-- shell:
-  - description: Create development directory
-    command: |
-      if [ ! -d ~/dev ]; then
-          mkdir -p ~/dev
-      fi
-
-- shell:
-  - description: Install nvm
-    command: |
-      if hash nvm 2>/dev/null; then
-        echo "NVM ALREADY INSTALLED"
-      else
-        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-      fi
-
-- shell:
-  - description: Create .nvmrc file
-    command: |
-      if [ -f ~/.nvmrc ]; then
-          echo "NVMRC FILE ALREADY EXISTS"
-      else
-          echo "lts/boron" > ~/.nvmrc
-      fi
