@@ -19,14 +19,3 @@
 
 [include]
     path = ~/.gitconfig_local
-
-[user]
-	name = Michael Conroy
-	email = sietekk@gmail.com
-[credential]
-	helper = osxkeychain
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true

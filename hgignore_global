@@ -1,8 +1,0 @@
-syntax: glob
-*.sw?
-*.pyc
-*.egg-info
-.DS_Store
-*.orig
-*.pyo
-*.sqlite

@@ -1,9 +1,0 @@
-[ui]
-username = Michael Conroy <michael@prometheusresearch.com>
-ssh = /usr/bin/ssh -A
-editor = vim
-ignore = ~/.hgignore
-
-%include ~/.hginclude
-
-verbose = True
